@@ -5,9 +5,9 @@ const SUCCESS = 3;
 
 let contactDatabase = [];
 
-
 //Listeners
 addContactBtn.addEventListener("click", addContactToDatabase);
+findBtn.addEventListener("click", searchDatabase);
 
 function validateInputs(contact){
     for(key in contact)
@@ -65,4 +65,31 @@ function addContactToDatabase(){
     }
 
     console.log(contactDatabase);
+}
+
+function findContact(searchTerm){
+    for (contact of contactDatabase)
+    {
+        for(key in contact)
+        {
+            if (contact[key] === searchTerm)
+            {
+                console.log(contact);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function searchDatabase(){
+    let input = searchInput.value;
+
+    if (findContact(input))
+    {
+        alert("Kontakt je pronađen");
+    }
+    else{
+        alert("Kontakt nije pronađen");
+    }
 }
